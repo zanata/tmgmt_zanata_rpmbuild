@@ -1,11 +1,11 @@
 %{?drupal7_find_provides_and_requires}
 
-%global module __MODULE__
+%global module tmgmt_zanata
 
 Name:          drupal7-%{module}
-Version:       __VERSION__
+Version:       1.10
 Release:       1%{?dist}
-Summary:       __SUMMARY__
+Summary:       TMGMT Zanata is a plugin for Drupal's Translation Management Module TMGMT.
 
 Group:         Applications/Publishing
 License:       GPLv2+
@@ -16,11 +16,16 @@ Source1:       %{name}-RPM-README.txt
 BuildArch:     noarch
 BuildRequires: drupal7-rpmbuild >= 7.23-3
 
-# phpcompatinfo (computed from version __VERSION__)
+# phpcompatinfo (computed from version 1.10)
 #Requires:      php-
 
 %description
-__DESCRIPTION__
+TMGMT Zanata is a plugin for Drupal's Translation Management Module TMGMT. The
+plugin allows TMGMT to send content to a configured Zanata project for
+translation, and can download translations as they are ready.
+
+Zanata is a web-based system for translators, content creators and developers
+to manage localisation projects (see zanata.org).
 
 This package provides the following Drupal module(s):
 * %{module}
@@ -36,7 +41,7 @@ cp -p %{SOURCE1} .
 
 
 %install
-mkdir -pm 0755 %{buildroot}%{module}/%{module}
+mkdir -pm 0755 %{buildroot}%{drupal7_modules}/%{module}
 cp -pr * %{buildroot}%{drupal7_modules}/%{module}/
 
 
@@ -47,6 +52,6 @@ cp -pr * %{buildroot}%{drupal7_modules}/%{module}/
 
 
 %changelog
-* ddd MMM DD YYYY __NAME__ <__EMAIL__> __VERSION__-1
+* Mon Jul 25 2016 David Mason <damason@redhat.com> 1.10-1
 - Initial package
 
